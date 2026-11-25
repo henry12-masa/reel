@@ -1,0 +1,30 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "reel-curation",
+	"main": "./src/worker.ts",
+	"compatibility_date": "2026-02-24",
+	"compatibility_flags": ["nodejs_compat"],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "reel-curation",
+			"database_id": "ffd38e0c-beef-40dc-86e8-b88470dd0c61",
+		},
+	],
+	"kv_namespaces": [
+		{
+			"binding": "SESSION",
+			"id": "1515f774526c424e856a497fcf61942a",
+		},
+	],
+	"r2_buckets": [
+		{
+			"binding": "MEDIA",
+			"bucket_name": "reel-curation-media",
+		},
+	],
+	"routes": [{ "pattern": "reel.napoblog.com", "custom_domain": true }],
+	"triggers": {
+		"crons": ["* * * * *"],
+	},
+}

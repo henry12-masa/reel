@@ -1,0 +1,115 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadCatalogIndex } from "../../lib/catalog";
+import { gradeInfo } from "../../lib/amazon";
+
+const index = await loadCatalogIndex(Astro.url.origin);
+if (!index) return new Response("名簿データを読み込めませんでした", { status: 500 });
+Astro.response.headers.set("Cache-Control", "public, max-age=3600");
+
+const fmt = new Intl.NumberFormat("ja-JP");
+const items = index.grades.map((p) => {
+	const info = gradeInfo(p.slug);
+	const first = p.years[0]?.[0];
+	const last = p.years.at(-1)?.[0];
+	return { ...p, maker: info?.scale ?? "", range: first === last ? `${first}` : `${first}〜${last}` };
+});
+---
+
+<Base title="シマノ・ダイワ リール全機種名簿" description={`シマノとダイワの釣りリール${fmt.format(index.total)}機種(${fmt.format(index.items ?? 0)}品番)を、スピニング・ベイト・両軸・電動などの種類と年ごとにまとめた名簿。年式・発売年つき。`}>
+	<header class="band intro">
+		<div class="frame">
+			<p class="eyebrow">All Products</p>
+			<h1 class="intro__title">全機種名簿</h1>
+			<p class="intro__lead">
+				シマノとダイワの釣りリール<strong>{fmt.format(index.total)}機種</strong>({fmt.format(index.items ?? 0)}品番)を、種類と年ごとに並べました。旧モデルの年式を調べるのにも使えます。解説付きの厳選リールには「厳選」の印が付いています。
+			</p>
+		</div>
+	</header>
+
+	<section class="band section" aria-label="種類一覧">
+		<div class="frame">
+			<ul class="pf-grid">
+				{
+					items.map((p) => (
+						<li>
+							<a href={`/catalog/${p.slug}`} class="pf">
+								<span class="pf__name">{p.label}</span>
+								<span class="pf__meta">
+									{p.maker && `${p.maker} · `}
+									{p.range}年
+								</span>
+								<span class="pf__count">
+									{fmt.format(p.count)}
+									<small>件</small>
+								</span>
+								<span class="pf__dl">シマノ {fmt.format(p.shimano ?? 0)} · ダイワ {fmt.format(p.daiwa ?? 0)}</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<p class="source">
+				出典:ダイワはダイワ公式サイトからリンクされている「パーツ検索システム」に載っているリールの全品番(同じシリーズ・年式・発売年の品番を1行にまとめています)。シマノは公式サイトの現行品の製品ページと、公式の「スプール互換表」「一部リール取扱説明書一覧」に載っている年式つきの品名。{index.updated}時点の情報です。年はダイワが公式の発売年、シマノが品名の年式(「22年式」のように表示)で、年式と発売年はずれることがあります。発売月は公式で確かめられないため載せていません。年の分からないものは「年不明」にまとめています。シマノの旧モデルは公式サイトで確かめられる範囲だけです。<a href="/posts/nenshiki">年式と発売年について</a></p>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.pf-grid {
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+		gap: var(--spacing-3);
+	}
+
+	.pf {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-1);
+		height: 100%;
+		padding: var(--spacing-4) var(--spacing-5);
+		background: var(--color-surface);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-card);
+		color: var(--color-text);
+		text-decoration: none;
+		transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+	}
+
+	.pf:hover {
+		transform: translateY(-2px);
+	}
+
+	.pf__name {
+		font-size: var(--font-size-lg);
+		font-weight: 600;
+	}
+
+	.pf__meta,
+	.pf__dl {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+	}
+
+	.pf__count {
+		margin-top: var(--spacing-2);
+		font-family: var(--font-mono);
+		font-size: var(--font-size-2xl);
+		font-weight: 500;
+	}
+
+	.pf__count small {
+		margin-left: 0.15em;
+		font-family: var(--font-body);
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.source {
+		margin-top: var(--spacing-8);
+		font-size: var(--font-size-xs);
+		line-height: 1.8;
+		color: var(--color-muted);
+	}
+</style>

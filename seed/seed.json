@@ -1,0 +1,6176 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "巻き継ぐ",
+		"description": "シマノ・ダイワの釣りリールを、種類・シリーズ・年代で横断するキュレーションサイト",
+		"author": "巻き継ぐ編集部"
+	},
+	"settings": {
+		"title": "巻き継ぐ",
+		"tagline": "ステラからイグジストまで。シマノ・ダイワの釣りリールを、種類・シリーズ・年式で横断するキュレーションサイト。旧モデルまで含めた全機種名簿つき。"
+	},
+	"collections": [
+		{
+			"slug": "kits",
+			"label": "リール",
+			"labelSingular": "リール",
+			"urlPattern": "/kits/{slug}",
+			"supports": [
+				"drafts",
+				"revisions",
+				"search",
+				"seo"
+			],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "品名",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "model_number",
+					"label": "年式つきの名前(22ステラ)",
+					"type": "string",
+					"searchable": true
+				},
+				{
+					"slug": "release_year",
+					"label": "年(ダイワは発売年、シマノは年式)",
+					"type": "integer",
+					"required": true
+				},
+				{
+					"slug": "released",
+					"label": "年(YYYY)",
+					"type": "string"
+				},
+				{
+					"slug": "scale",
+					"label": "メーカーと年の種類(シマノ · 22年式)",
+					"type": "string"
+				},
+				{
+					"slug": "tier",
+					"label": "推し度",
+					"type": "select",
+					"required": true,
+					"validation": {
+						"options": [
+							"essential",
+							"recommended",
+							"deep"
+						]
+					}
+				},
+				{
+					"slug": "summary",
+					"label": "ひとこと紹介",
+					"type": "text",
+					"searchable": true
+				},
+				{
+					"slug": "curator_note",
+					"label": "キュレーターの一言",
+					"type": "text",
+					"searchable": true
+				},
+				{
+					"slug": "cover",
+					"label": "カバー画像",
+					"type": "image"
+				},
+				{
+					"slug": "content",
+					"label": "解説本文",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "official_url",
+					"label": "メーカーの製品ページ",
+					"type": "url"
+				},
+				{
+					"slug": "amazon_query",
+					"label": "Amazon検索語(空なら自動、none でリンクなし)",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"slug": "posts",
+			"label": "特集",
+			"labelSingular": "特集",
+			"urlPattern": "/posts/{slug}",
+			"supports": [
+				"drafts",
+				"revisions",
+				"preview",
+				"scheduling",
+				"search",
+				"seo"
+			],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "タイトル",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "アイキャッチ",
+					"type": "image"
+				},
+				{
+					"slug": "content",
+					"label": "本文",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "excerpt",
+					"label": "抜粋",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"slug": "pages",
+			"label": "固定ページ",
+			"labelSingular": "固定ページ",
+			"urlPattern": "/pages/{slug}",
+			"supports": [
+				"drafts",
+				"revisions",
+				"preview",
+				"search",
+				"seo"
+			],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "タイトル",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "本文",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		}
+	],
+	"taxonomies": [
+		{
+			"name": "era",
+			"label": "年代",
+			"labelSingular": "年代",
+			"hierarchical": false,
+			"collections": [
+				"kits"
+			],
+			"terms": [
+				{
+					"slug": "until2022",
+					"label": "2022年までのモデル"
+				},
+				{
+					"slug": "y2023",
+					"label": "2023〜2024年のモデル"
+				},
+				{
+					"slug": "y2025",
+					"label": "2025年以降のモデル"
+				}
+			]
+		},
+		{
+			"name": "grade",
+			"label": "種類",
+			"labelSingular": "種類",
+			"hierarchical": false,
+			"collections": [
+				"kits"
+			],
+			"terms": [
+				{
+					"slug": "spinning",
+					"label": "スピニング(汎用)"
+				},
+				{
+					"slug": "sw",
+					"label": "スピニング(大型・SW)"
+				},
+				{
+					"slug": "lever",
+					"label": "スピニング(レバーブレーキ)"
+				},
+				{
+					"slug": "surf",
+					"label": "スピニング(投げ)"
+				},
+				{
+					"slug": "bait",
+					"label": "ベイトキャスティング"
+				},
+				{
+					"slug": "conventional",
+					"label": "両軸(船・オフショア)"
+				},
+				{
+					"slug": "electric",
+					"label": "電動"
+				},
+				{
+					"slug": "other",
+					"label": "その他(黒鯛・ワカサギ・フライなど)"
+				}
+			]
+		},
+		{
+			"name": "series",
+			"label": "シリーズ",
+			"labelSingular": "シリーズ",
+			"hierarchical": false,
+			"collections": [
+				"kits"
+			],
+			"terms": [
+				{
+					"slug": "stella",
+					"label": "ステラ"
+				},
+				{
+					"slug": "twinpower",
+					"label": "ツインパワー"
+				},
+				{
+					"slug": "vanquish",
+					"label": "ヴァンキッシュ"
+				},
+				{
+					"slug": "stradic",
+					"label": "ストラディック"
+				},
+				{
+					"slug": "shimano-value",
+					"label": "アルテグラ・ナスキー"
+				},
+				{
+					"slug": "exsence",
+					"label": "エクスセンス"
+				},
+				{
+					"slug": "shimano-light",
+					"label": "ソアレ・セフィア"
+				},
+				{
+					"slug": "bb-x",
+					"label": "BB-X"
+				},
+				{
+					"slug": "calcutta",
+					"label": "カルカッタコンクエスト"
+				},
+				{
+					"slug": "antares",
+					"label": "アンタレス"
+				},
+				{
+					"slug": "metanium",
+					"label": "メタニウム"
+				},
+				{
+					"slug": "ocea",
+					"label": "オシア"
+				},
+				{
+					"slug": "shimano-electric",
+					"label": "ビーストマスター"
+				},
+				{
+					"slug": "exist",
+					"label": "イグジスト"
+				},
+				{
+					"slug": "certate",
+					"label": "セルテート"
+				},
+				{
+					"slug": "airity",
+					"label": "エアリティ"
+				},
+				{
+					"slug": "luvias",
+					"label": "ルビアス"
+				},
+				{
+					"slug": "daiwa-value",
+					"label": "カルディア・フリームス・レグザ・レブロス・BG"
+				},
+				{
+					"slug": "saltiga",
+					"label": "ソルティガ"
+				},
+				{
+					"slug": "kohga",
+					"label": "紅牙"
+				},
+				{
+					"slug": "steez",
+					"label": "スティーズ"
+				},
+				{
+					"slug": "zillion",
+					"label": "タトゥーラ"
+				},
+				{
+					"slug": "seaborg",
+					"label": "シーボーグ"
+				}
+			]
+		},
+		{
+			"name": "category",
+			"label": "特集カテゴリ",
+			"labelSingular": "特集カテゴリ",
+			"hierarchical": true,
+			"collections": [
+				"posts"
+			],
+			"terms": [
+				{
+					"slug": "guide",
+					"label": "入門ガイド"
+				},
+				{
+					"slug": "history",
+					"label": "リールの歴史と比較"
+				}
+			]
+		},
+		{
+			"name": "tag",
+			"label": "タグ",
+			"labelSingular": "タグ",
+			"hierarchical": false,
+			"collections": [
+				"posts"
+			],
+			"terms": [
+				{
+					"slug": "beginner",
+					"label": "はじめての人へ"
+				},
+				{
+					"slug": "history",
+					"label": "年式と歴史"
+				},
+				{
+					"slug": "technology",
+					"label": "技術"
+				},
+				{
+					"slug": "flagship",
+					"label": "最上位モデル"
+				}
+			]
+		}
+	],
+	"bylines": [
+		{
+			"id": "byline-editorial",
+			"slug": "editorial",
+			"displayName": "巻き継ぐ編集部"
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "メインメニュー",
+			"items": [
+				{
+					"type": "custom",
+					"label": "厳選リール",
+					"url": "/kits"
+				},
+				{
+					"type": "custom",
+					"label": "年表",
+					"url": "/timeline"
+				},
+				{
+					"type": "custom",
+					"label": "種類ガイド",
+					"url": "/guide"
+				},
+				{
+					"type": "custom",
+					"label": "全機種名簿",
+					"url": "/catalog"
+				},
+				{
+					"type": "custom",
+					"label": "特集",
+					"url": "/posts"
+				},
+				{
+					"type": "custom",
+					"label": "このサイトについて",
+					"url": "/pages/about"
+				}
+			]
+		}
+	],
+	"widgetAreas": [
+		{
+			"name": "sidebar",
+			"label": "サイドバー",
+			"description": "特集記事ページに表示",
+			"widgets": [
+				{
+					"type": "component",
+					"componentId": "core:search",
+					"title": "検索"
+				},
+				{
+					"type": "component",
+					"componentId": "core:categories",
+					"title": "特集カテゴリ"
+				},
+				{
+					"type": "component",
+					"componentId": "core:recent-posts",
+					"title": "新しい特集",
+					"props": {
+						"count": 5,
+						"showDate": false
+					}
+				}
+			]
+		},
+		{
+			"name": "footer",
+			"label": "フッター",
+			"description": "フッターに表示",
+			"widgets": [
+				{
+					"type": "content",
+					"title": "編集方針",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "f0",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "f1",
+									"text": "点数や価格の比較はしません。どんなリールかをひとことで添えて、種類・シリーズ・年代のどこからでも次の1台に出会えるようにしています。当サイトはファンによる非公式のキュレーションサイトで、株式会社シマノ・グローブライド株式会社(ダイワ)とは関係ありません。"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"content": {
+		"kits": [
+			{
+				"id": "kit-shimano-21-bb-x-technium",
+				"slug": "shimano-21-bb-x-technium",
+				"status": "published",
+				"data": {
+					"title": "シマノ 21BB-X テクニウム",
+					"model_number": "21BB-X テクニウム",
+					"release_year": 2021,
+					"released": "2021",
+					"scale": "シマノ · 21年式",
+					"tier": "deep",
+					"summary": "磯のグレ釣りのためのレバーブレーキリール。SUTブレーキIIを搭載。",
+					"curator_note": "レバーで糸を出して体勢を立て直す。磯釣り独特の道具だ。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s0",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s1",
+									"text": "シマノの磯釣り用のレバーブレーキ付きスピニングリール。公式サイトの品番は2500DXG S RからC4000D TYPE-G S Rまでの5つ。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s2",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s3",
+									"text": "公式サイトは、進化したSUTブレーキIIでローター逆転時のブレをなくし、すばやく糸を出して体勢を立て直せると説明している。HAGANEボディとギア、新しいMGLローター、海水の侵入を防ぐXプロテクトを載せ、ギア比6.6:1の2500・C3000DXGと、遠投の釣りに向くモデルをそろえる。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s4",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s5",
+									"text": "公式サイトに載っているテスターのコメントによると、初代BB-Xから約40年にわたって形や素材、機能を変えながら進化してきたシリーズ。BB-Xには、ほかにハイパーフォース、デスピナ、ラリッサ、レマーレなどがある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s6",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-bb-x-technium-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-bb-x-technium-s7",
+									"text": "磯でグレ(メジナ)やチヌを狙う人、レバーブレーキの釣りを本格的に始めたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 21BB-X テクニウム",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/leverbrakespinning/a075f00003afbqpqau.html"
+				},
+				"taxonomies": {
+					"era": [
+						"until2022"
+					],
+					"grade": [
+						"lever"
+					],
+					"series": [
+						"bb-x"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-21-calcutta-conquest",
+				"slug": "shimano-21-calcutta-conquest",
+				"status": "published",
+				"data": {
+					"title": "シマノ 21カルカッタコンクエスト",
+					"model_number": "21カルカッタコンクエスト",
+					"release_year": 2021,
+					"released": "2021",
+					"scale": "シマノ · 21年式",
+					"tier": "essential",
+					"summary": "金属ボディの丸型ベイト。バス用で初めてインフィニティドライブを積んだ。",
+					"curator_note": "巻くことそのものが楽しい、円形リールの代表。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-s8",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-s9",
+									"text": "シマノの丸型(円形)ベイトキャスティングリール。公式サイトの品番は100・100HG・200・200HG・200XGと左ハンドルの10品番で、自重は220〜240g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-sa",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-sb",
+									"text": "公式サイトは、ソルト用ベイトリールで評価の高いインフィニティドライブをバスリールとして初めて搭載し、巻き上げの感度・パワー・フィーリングが向上したと説明している。ボディをロープロ化してパーミングしやすくし、低慣性のマグナムライトスプールIIIを採用した。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-sc",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-sd",
+									"text": "カルカッタコンクエストには、ほかに23年式のMD・BFS、24年式のシャローエディション、26年式のDC・BFSリミテッドが公式サイトに載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-se",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-21-calcutta-conquest-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-21-calcutta-conquest-sf",
+									"text": "クランクベイトなど巻きの釣りが好きな人、金属の丸型リールの手ざわりが好きな人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 21カルカッタコンクエスト",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/baitlurecasting/a075f00003t47fjqab.html"
+				},
+				"taxonomies": {
+					"era": [
+						"until2022"
+					],
+					"grade": [
+						"bait"
+					],
+					"series": [
+						"calcutta"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-22-ocea-conquest",
+				"slug": "shimano-22-ocea-conquest",
+				"status": "published",
+				"data": {
+					"title": "シマノ 22オシアコンクエスト",
+					"model_number": "22オシアコンクエスト",
+					"release_year": 2022,
+					"released": "2022",
+					"scale": "シマノ · 22年式",
+					"tier": "recommended",
+					"summary": "船・オフショア用の丸型両軸リール。「滑・強・操」を掲げる。",
+					"curator_note": "タイラバやジギングで、上質な一巻きを味わえる。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-sg",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-sh",
+									"text": "シマノのオフショア・船用の両軸リール。公式サイトの品番は200・300番台のPG・HG・XGと左ハンドルの10品番で、自重は285〜355g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-si",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-sj",
+									"text": "公式サイトは、マイクロモジュールギアとHAGANEボディに、インフィニティドライブを加えて巻きの軽さ・力強さ・感度を高め、Xプロテクトで防水性と耐久性も上げたと説明している。仕掛けの沈む速さを制御するフォールレバーの形を新しくし、巻き取りにはワンウェイローラーベアリングを載せる。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-sk",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-sl",
+									"text": "公式の取扱説明書一覧には、カウンター付きの18オシアコンクエストCTと24オシアコンクエストCTが載っている。26年式では小型の「オシアコンクエストFT」も出ている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-sm",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-ocea-conquest-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-ocea-conquest-sn",
+									"text": "タイラバやライトジギングなど、船の釣りで巻き心地にこだわりたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 22オシアコンクエスト",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/ryojikuoffshorefunesmall/a075f00003jz5pnqay.html"
+				},
+				"taxonomies": {
+					"era": [
+						"until2022"
+					],
+					"grade": [
+						"conventional"
+					],
+					"series": [
+						"ocea"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-22-stella",
+				"slug": "shimano-22-stella",
+				"status": "published",
+				"data": {
+					"title": "シマノ 22ステラ",
+					"model_number": "22ステラ",
+					"release_year": 2022,
+					"released": "2022",
+					"scale": "シマノ · 22年式",
+					"tier": "essential",
+					"summary": "シマノのスピニングリールの頂点。3つの「インフィニティ」技術をまとった現行ステラ。",
+					"curator_note": "1000SSPGからC5000XGまで16品番。迷ったらこれ、と言われ続ける理由が詰まっている。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-so",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-sp",
+									"text": "シマノの汎用スピニングリールの最上位モデル。公式サイトの品番は1000SSPGからC5000XGまでの16品番で、自重は165〜260g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-sq",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-sr",
+									"text": "公式サイトでは、ギアの耐久性を高めるインフィニティクロス、ラインを密に巻いて放出時の抵抗を減らすインフィニティループ、高負荷でも軽く巻き取れるインフィニティドライブの3つを「3つのインフィニティ」として打ち出している。ライントラブルを抑えるアンチツイストフィンや、ドラグの耐久性を高めたDURAクロスも載る。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-ss",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-st",
+									"text": "シマノの公式サイトでは、ステラは1992年に生まれたブランドとして紹介されている。公式のスプール互換表には、ひとつ前の「18-19ステラ」も載っている。大型の「ステラSW」は別のシリーズとして25ステラSWが出ている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-su",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-stella-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-stella-sv",
+									"text": "ひとつのリールで淡水からライトソルト、シーバスまで幅広く使いたい人、長く使い込める1台がほしい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 22ステラ",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f00003e22p2qaa.html"
+				},
+				"taxonomies": {
+					"era": [
+						"until2022"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"stella"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-22-beastmaster-2000",
+				"slug": "shimano-22-beastmaster-2000",
+				"status": "published",
+				"data": {
+					"title": "シマノ 22ビーストマスター 2000",
+					"model_number": "22ビーストマスター 2000",
+					"release_year": 2022,
+					"released": "2022",
+					"scale": "シマノ · 22年式",
+					"tier": "deep",
+					"summary": "ブラシレスモーター「GIGA-MAX MOTOR」を積んだ電動リール。電動ジギングにも。",
+					"curator_note": "巻いて、瞬時に止まる。電動リールでジギングを楽しむための1台。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-sw",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-sx",
+									"text": "シマノの電動リール。自重は690g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-sy",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-sz",
+									"text": "公式サイトは、ビーストマスターだけに載るブラシレスモーター「GIGA-MAX MOTOR」が、ハイパワー・ハイスピードで高温に強く長寿命、反応もよいと説明している。その力を伝える強化ギアシステムを載せ、手巻きのジギングと同じような細かい誘いができる電動ジギングの機能を備える。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-s10",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-s11",
+									"text": "公式の取扱説明書一覧には、14・16・18・19・21年式のビーストマスターや、20・22・24年式の「ビーストマスターMD」が載っている。26年式では1000と3000IIが出ている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-s12",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-22-beastmaster-2000-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-22-beastmaster-2000-s13",
+									"text": "電動ジギングでブリやヒラマサを狙いたい人、中深場の船釣りをする人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 22ビーストマスター 2000",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/electricaccessories/a075f00003oh00wqac.html"
+				},
+				"taxonomies": {
+					"era": [
+						"until2022"
+					],
+					"grade": [
+						"electric"
+					],
+					"series": [
+						"shimano-electric"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-22-exist",
+				"slug": "daiwa-22-exist",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 22イグジスト",
+					"model_number": "22イグジスト",
+					"release_year": 2022,
+					"released": "2022",
+					"scale": "ダイワ · 2022年発売",
+					"tier": "essential",
+					"summary": "ダイワの小型スピニングの最高峰。エアドライブデザインとモノコックボディ。",
+					"curator_note": "「機能と美」の結晶とダイワ自身が言い切る1台。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s14",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s15",
+									"text": "ダイワの小型スピニングリールの最上位モデル。公式サイトにはLTモデルとSFモデル合わせて21の品番が載っている。パーツ検索システムでは、LTモデルが2022年、SFモデルが2023年の発売。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s16",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s17",
+									"text": "公式サイトは、軽い回転のエアドライブローターを中心とする設計思想「エアドライブデザイン」(ローター・ベール・スプール・シャフトの最大4つの技術)、ボディカバーをなくして剛性を高めたモノコックボディ、表面処理で硬さを高めたタフデジギアを載せていると説明している。防水構造のマグシールドは、LTモデルがドライブギア両端・ピニオン・ラインローラーの3か所、SFモデルはピニオンの1か所。ドラグはATD TYPE-L。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s18",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s19",
+									"text": "ダイワのパーツ検索システムには、2005年以降のイグジストが載っていて、年式は12・15・18・22と続く。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s1a",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-exist-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-exist-s1b",
+									"text": "ライトゲームからシーバス、エギングまで、最高のスピニングを1台持ちたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 22イグジスト",
+					"official_url": "https://www.daiwa.com/jp/product/olqf9k0"
+				},
+				"taxonomies": {
+					"era": [
+						"until2022"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"exist"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-22-seaborg-200j",
+				"slug": "daiwa-22-seaborg-200j",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 22シーボーグ 200J",
+					"model_number": "22シーボーグ 200J",
+					"release_year": 2022,
+					"released": "2022",
+					"scale": "ダイワ · 2022年発売",
+					"tier": "recommended",
+					"summary": "自重490g。スマートフォンで設定できる小型電動リール。",
+					"curator_note": "軽さは感度。片手で操れる小型電動の決定版。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1c",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1d",
+									"text": "ダイワの小型電動リール。公式サイトには200J・200JLとダブルハンドルの200J-DH・200JL-DHの4品番が載っている。パーツ検索システムでの発売年は2022年。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1e",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1f",
+									"text": "公式サイトは、自重490gとAIRコードの標準装備で軽さを感度につなげ、19シーボーグ200Jに比べて巻き上げ力が1.1倍、ドラグ力が1.3倍になったと説明している。スマートフォンで設定できる「電動モバイルセッティング」に対応し、モーターON/OFF連動クラッチ、ドット液晶カウンター、デプスアラームを載せる。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1g",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1h",
+									"text": "パーツ検索システムには2000年以降のシーボーグが載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1i",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-22-seaborg-200j-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-22-seaborg-200j-s1j",
+									"text": "船の電動リールを軽くしたい人、ライトな船釣りから電動リールを始めたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 22シーボーグ 200J",
+					"official_url": "https://www.daiwa.com/jp/product/711szwg"
+				},
+				"taxonomies": {
+					"era": [
+						"until2022"
+					],
+					"grade": [
+						"electric"
+					],
+					"series": [
+						"seaborg"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-23-vanquish",
+				"slug": "shimano-23-vanquish",
+				"status": "published",
+				"data": {
+					"title": "シマノ 23ヴァンキッシュ",
+					"model_number": "23ヴァンキッシュ",
+					"release_year": 2023,
+					"released": "2023",
+					"scale": "シマノ · 23年式",
+					"tier": "recommended",
+					"summary": "軽さのシマノ代表。CI4+ローターの「MGL」シリーズの頂点。",
+					"curator_note": "軽いだけでなく、インフィニティ技術で強さも上げてきた。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1k",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1l",
+									"text": "シマノの汎用スピニングリールで、カーボン繊維強化樹脂CI4+の低慣性ローター(MGLローター)を使う「マグナムライト」シリーズの頂点。公式サイトの品番は1000SSSPGからC5000XGまでの15品番で、自重は140〜220g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1m",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1n",
+									"text": "公式サイトは、MGLローターで巻き始めと止めの動きが軽くなり、ルアーの波動や水流の変化を感じ取りやすくなると説明している。インフィニティ技術によるキャストフィール・耐久性・巻き上げ力の向上、ライントラブルの抑制、ドラグの耐摩耗性の向上もうたう。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1o",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1p",
+									"text": "公式のスプール互換表には16ヴァンキッシュ、19ヴァンキッシュが載っている。2026年式では、別の品番構成の「ヴァンキッシュ CE」も出ている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1q",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-vanquish-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-vanquish-s1r",
+									"text": "トラウトやアジング、バスのスピニングなど、軽いルアーを繊細に操る釣りをする人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 23ヴァンキッシュ",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f00003slvm7qac.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"vanquish"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-23-stradic",
+				"slug": "shimano-23-stradic",
+				"status": "published",
+				"data": {
+					"title": "シマノ 23ストラディック",
+					"model_number": "23ストラディック",
+					"release_year": 2023,
+					"released": "2023",
+					"scale": "シマノ · 23年式",
+					"tier": "essential",
+					"summary": "上位機の4つの技術を載せた、シマノの「新基準」スピニング。",
+					"curator_note": "はじめての本格リールに、まず候補に挙がる1台。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1s",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1t",
+									"text": "シマノの汎用スピニングリール。公式サイトの品番はC2000SからC5000XGまでの14品番で、自重は185〜290g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1u",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1v",
+									"text": "公式サイトは、フラッグシップモデルに載っているインフィニティクロス(ギアの耐久性)、インフィニティドライブ(巻き上げ力)、アンチツイストフィン(ライントラブルの抑制)、デュラクロス(ドラグワッシャーの耐久性)の4つを新たに搭載したと説明し、「スピニングリールの新基準」と位置づけている。インフィニティクロスでギアの耐久性は従来設計の約2倍になったという。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1w",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1x",
+									"text": "公式のスプール互換表には15-16ストラディック、19ストラディック、16ストラディックCI4+が載っている。大型の「ストラディックSW」も18・20・24年式がある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1y",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-23-stradic-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-23-stradic-s1z",
+									"text": "1台目の本格的なスピニングリールを探している人、汎用機を予算内で選びたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 23ストラディック",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f00003slvodqas.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"stradic"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-23-airity",
+				"slug": "daiwa-23-airity",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 23エアリティ",
+					"model_number": "23エアリティ",
+					"release_year": 2023,
+					"released": "2023",
+					"scale": "ダイワ · 2023年発売",
+					"tier": "recommended",
+					"summary": "LT2500Sで150g。ダイワ史上最高レベルの軽さをうたうスピニング。",
+					"curator_note": "軽さを貫きながら、マグネシウムのモノコックボディで強さも妥協しない。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s20",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s21",
+									"text": "ダイワの超軽量スピニングリール。公式サイトにはLTモデルとSFモデル合わせて17の品番が載っている。パーツ検索システムでは、LTモデルが2023年、SFモデルとST(スペシャルチューン)が2024年の発売。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s22",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s23",
+									"text": "公式サイトは、LT2500Sで自重150gと、ダイワ史上最高レベルの軽さに到達したと説明している。エアドライブデザインをフル装備し、ボディはマグネシウムの一体成型のモノコックボディ。「十分な実釣性能をともなわない軽さには意味がない」というダイワのリール設計の原点を受け継いだという。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s24",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s25",
+									"text": "パーツ検索システムで見ると、エアリティを名乗るリールは23年式から。名前に「エアリティー」が入る「トーナメントエアリティー」の品番も、2002年と2004年の発売として載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s26",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-airity-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-airity-s27",
+									"text": "軽さを最優先したいライトゲームやトラウトの人、ロッドとのバランスにこだわる人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 23エアリティ",
+					"official_url": "https://www.daiwa.com/jp/product/fpgzzrw"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"airity"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-23-lexa",
+				"slug": "daiwa-23-lexa",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 23レグザ",
+					"model_number": "23レグザ",
+					"release_year": 2023,
+					"released": "2023",
+					"scale": "ダイワ · 2023年発売",
+					"tier": "recommended",
+					"summary": "アルミボディのタフなスピニング。エアドライブデザインで操作性も向上。",
+					"curator_note": "ショアジギングやロックフィッシュなど、タフさが要る釣りに。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s28",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s29",
+									"text": "ダイワのスピニングリール。公式サイトにはLT2500からLT6000D-Hまで12の品番が載っている。パーツ検索システムでの発売年は2023年。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s2a",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s2b",
+									"text": "公式サイトは、ボディに高強度のアルミを使い、ピニオン部にマグシールドを載せて、レグザの代名詞である高剛性・高耐久を実現したと説明している。エアドライブデザインを新たに採用し、巻き出しの軽さと重量バランスが改善された。ショアジギング、シーバス、SLJ、ロックフィッシュに向くという。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s2c",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s2d",
+									"text": "パーツ検索システムで見ると、レグザは19年式と23年式がある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s2e",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-23-lexa-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-23-lexa-s2f",
+									"text": "手頃な価格で、ハードに使える金属ボディのリールがほしい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 23レグザ",
+					"official_url": "https://www.daiwa.com/jp/product/w9f5h6n"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"daiwa-value"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-24-twinpower",
+				"slug": "shimano-24-twinpower",
+				"status": "published",
+				"data": {
+					"title": "シマノ 24ツインパワー",
+					"model_number": "24ツインパワー",
+					"release_year": 2024,
+					"released": "2024",
+					"scale": "シマノ · 24年式",
+					"tier": "essential",
+					"summary": "「質実剛健」を掲げる、金属ローターのタフなスピニング。",
+					"curator_note": "ステラの技術を受け継ぎつつ、壊れにくさに振った1台。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2g",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2h",
+									"text": "シマノの汎用スピニングリール。公式サイトの品番はC2000SからC5000XGまでの14品番で、自重は175〜265g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2i",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2j",
+									"text": "公式サイトは、初代から一貫して実釣での耐久性と機能を追い求めてきたモデルと説明している。ローターに金属を使い、ボディは剛性を重視した設計。ギアの耐久性を高めるインフィニティクロス、パワフルな巻き上げのインフィニティドライブ、ライントラブルを抑える構造などを載せている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2k",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2l",
+									"text": "公式のスプール互換表には15ツインパワー、20ツインパワーが載っている。派生モデルとして、ソルトでの使用を考えた「ツインパワーXD」(17・21・25年式)、大型の「ツインパワーSW」(21年式)もある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2m",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-twinpower-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-twinpower-s2n",
+									"text": "ショアジギングやシーバスなど、負荷の高い釣りでも安心して使える汎用機がほしい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 24ツインパワー",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f00003slw5kqac.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"twinpower"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-24-metanium-dc",
+				"slug": "shimano-24-metanium-dc",
+				"status": "published",
+				"data": {
+					"title": "シマノ 24メタニウムDC",
+					"model_number": "24メタニウム DC",
+					"release_year": 2024,
+					"released": "2024",
+					"scale": "シマノ · 24年式",
+					"tier": "recommended",
+					"summary": "DCブレーキ搭載機で最軽量をうたう、漆黒のバーサタイルベイト。",
+					"curator_note": "DCの安心感を、軽快なキャストフィールで。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2o",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2p",
+									"text": "シマノのバス用ベイトキャスティングリール。公式サイトの品番は70・70HG・70XGとその左ハンドル(71)の6品番で、自重は175〜180g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2q",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2r",
+									"text": "公式サイトは、スプールの回転をマイコンで感知してブレーキ力を調整するDCブレーキ「I-DC5」と、径34mm・幅19mmの低慣性MGLスプールIIIを組み合わせたと説明している。DC初のコアソリッドボディを採用し、DCブレーキ搭載機で最軽量を実現したという。ブレーキ制御は23アンタレスDC MDと同等。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2s",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2t",
+									"text": "公式サイトには、DCを載せない20メタニウムも現行品として載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2u",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-24-metanium-dc-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-24-metanium-dc-s2v",
+									"text": "ベイトリールのバックラッシュが心配な人、1台でいろいろな重さのルアーを投げたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 24メタニウム DC",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/baitlurecasting/a075f000045zv32qag.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"bait"
+					],
+					"series": [
+						"metanium"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-24-steez-sv-tw",
+				"slug": "daiwa-24-steez-sv-tw",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 24スティーズ SV TW",
+					"model_number": "24スティーズ SV TW",
+					"release_year": 2024,
+					"released": "2024",
+					"scale": "ダイワ · 2024年発売",
+					"tier": "recommended",
+					"summary": "スプール径32mmのど真ん中を埋める、第三世代スティーズのバーサタイル機。",
+					"curator_note": "28・30・34・36mmの間に、ついに32mmが来た。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s2w",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s2x",
+									"text": "ダイワのバス用ベイトキャスティングリール。公式サイトには100・100H・100XHと左ハンドルの6品番が載っている。パーツ検索システムでの発売年は2024年(100XHLだけ2023年)。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s2y",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s2z",
+									"text": "公式サイトは、スティーズのベイトリールはスプール径が2mm刻みで、28mm(AIR)・30mm(CT)・34mm(LIMITED・AII)・36mm(HLC)と並ぶなか、長く空いていた32mmを埋めるバーサタイル機だと説明している。ハイパードライブデザイン、フルメタルのハイパーアームドハウジング、TWS、UTDドラグ、G1ジュラルミンのスプールを載せる。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s30",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s31",
+									"text": "パーツ検索システムには2006年以降のスティーズのベイトリールが載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s32",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-steez-sv-tw-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-steez-sv-tw-s33",
+									"text": "1台でいろいろなルアーを投げたいバス釣りの人、スティーズを初めて手にする人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 24スティーズ SV TW",
+					"official_url": "https://www.daiwa.com/jp/product/n19wa9p"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"bait"
+					],
+					"series": [
+						"steez"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-24-certate",
+				"slug": "daiwa-24-certate",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 24セルテート",
+					"model_number": "24セルテート",
+					"release_year": 2024,
+					"released": "2024",
+					"scale": "ダイワ · 2024年発売",
+					"tier": "essential",
+					"summary": "「ゆるぎない信頼」を掲げる、剛性重視のスピニング。エアドライブデザインをフル装備。",
+					"curator_note": "誰のためでもなく、すべての釣り人のために。20年変わらない理念。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s34",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s35",
+									"text": "ダイワの小型スピニングリール。公式サイトにはFC LT2000S-PからLT5000D-XHまで15の品番が載っている。パーツ検索システムでの発売年は2024年(LT4000-Cだけ2023年)。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s36",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s37",
+									"text": "公式サイトは、使い手を選ばない快適な操作性と確かな剛性という理念が、20年たった今も変わらないと説明している。エアドライブデザインをフル装備し、モノコックボディ、タフデジギア、ATD TYPE-L、マグシールドを載せる。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s38",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s39",
+									"text": "パーツ検索システムには2004年以降のセルテートが載っていて、年式は10・13・16・19・24と続く。大型の「セルテートSW」(21・24・26年式)と、26年式の「セルテートHD」もある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s3a",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-certate-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-certate-s3b",
+									"text": "ショアジギングやシーバスなど、強さも操作性も欲しい人、長く使えるタフな1台を探している人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 24セルテート",
+					"official_url": "https://www.daiwa.com/jp/product/smyoi38"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"certate"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-24-luvias",
+				"slug": "daiwa-24-luvias",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 24ルビアス",
+					"model_number": "24ルビアス",
+					"release_year": 2024,
+					"released": "2024",
+					"scale": "ダイワ · 2024年発売",
+					"tier": "recommended",
+					"summary": "誕生から20年目の6代目。ZAIONのボディとローターで軽さと剛性を両立。",
+					"curator_note": "軽さの継承と進化。5000番も加わった。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3c",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3d",
+									"text": "ダイワのスピニングリール。公式サイトにはLTモデルとSFモデル合わせて16の品番が載っている。パーツ検索システムでは、LTモデルが2024年、SFモデルとSTが2025年の発売。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3e",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3f",
+									"text": "公式サイトは、ルビアス誕生から20年目の6代目で、カーボン樹脂のZAIONのボディとローターで軽さと剛性を高い次元で両立したと説明している。エアドライブデザインで操作性を高め、新たに5000番サイズを加えた。ドラグやメインシャフトの素材、ギアの表面処理は用途ごとに作り分けている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3g",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3h",
+									"text": "パーツ検索システムには2003年以降のルビアスが載っていて、年式は07・12・15・20・24と続く。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3i",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-luvias-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-luvias-s3j",
+									"text": "軽さと価格のバランスを重視する人、エギングやサーフまで1台で広く使いたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 24ルビアス",
+					"official_url": "https://www.daiwa.com/jp/product/2dhvqnt"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"luvias"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-24-revros",
+				"slug": "daiwa-24-revros",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 24レブロス",
+					"model_number": "24レブロス",
+					"release_year": 2024,
+					"released": "2024",
+					"scale": "ダイワ · 2024年発売",
+					"tier": "essential",
+					"summary": "エアドライブローターを載せた、ダイワの入門スピニング。",
+					"curator_note": "「巻く」「止める」が軽くなった、はじめての1台。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3k",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3l",
+									"text": "ダイワのスピニングリール。公式サイトにはLT1000SからLT6000D-Hまで11の品番が載っている。パーツ検索システムでの発売年は2024年。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3m",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3n",
+									"text": "公式サイトは、新型のエアドライブローターとワイヤーのエアドライブベール、アームレバーでローターまわりを軽くし、2500S-XHで210g(20レブロスLT2500S-H比で10g軽い)になったと説明している。ドラグはATD TYPE-L。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3o",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3p",
+									"text": "パーツ検索システムには2006年以降のレブロスが載っていて、年式は15・20・24と続く。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3q",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-24-revros-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-24-revros-s3r",
+									"text": "これから釣りを始める人、サブ機や家族用のリールを探している人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 24レブロス",
+					"official_url": "https://www.daiwa.com/jp/product/hlz949j"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"daiwa-value"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-25-tatula-sv-tw",
+				"slug": "daiwa-25-tatula-sv-tw",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 25タトゥーラ SV TW",
+					"model_number": "25タトゥーラ SV TW",
+					"release_year": 2024,
+					"released": "2024",
+					"scale": "ダイワ · 2024年発売",
+					"tier": "essential",
+					"summary": "タフコンセプトのタトゥーラに、SVブーストを載せたベイト。",
+					"curator_note": "年式は25、発売は2024年。年式と発売年がずれる例のひとつ。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3s",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3t",
+									"text": "ダイワのバス用ベイトキャスティングリール。公式サイトには100・100H・100XHと左ハンドルの6品番が載っている。パーツ検索システムでの発売年は2024年(年式は25)。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3u",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3v",
+									"text": "公式サイトは、タトゥーラシリーズの核であるタフコンセプトを受け継いだと説明している。載っている技術は、ハイパードライブデザイン、ハイパードライブデジギア、アルミのハイパーアームドハウジング、TWS、2段階で飛び出すインダクトローターを持つSVブースト、UTDドラグ。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3w",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3x",
+									"text": "パーツ検索システムには2014年以降のタトゥーラが載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3y",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-tatula-sv-tw-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-tatula-sv-tw-s3z",
+									"text": "バス釣りを始めて、最初のしっかりしたベイトリールを探している人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 25タトゥーラ SV TW",
+					"official_url": "https://www.daiwa.com/jp/product/nvb3afh"
+				},
+				"taxonomies": {
+					"era": [
+						"y2023"
+					],
+					"grade": [
+						"bait"
+					],
+					"series": [
+						"zillion"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-25-ultegra",
+				"slug": "shimano-25-ultegra",
+				"status": "published",
+				"data": {
+					"title": "シマノ 25アルテグラ",
+					"model_number": "25アルテグラ",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "シマノ · 25年式",
+					"tier": "recommended",
+					"summary": "コアソリッドシリーズの入口。滑らかな巻きと耐久性を手の届く価格帯で。",
+					"curator_note": "巻き続ける釣りにこそ、重めのローターの良さが出る。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s40",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s41",
+									"text": "シマノの汎用スピニングリールで、金属や高強度樹脂の高剛性ローターを使う「コアソリッド」シリーズのエントリーモデル。公式サイトの品番はC2000SからC5000XGまでの11品番で、自重は180〜275g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s42",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s43",
+									"text": "公式サイトは、適度な慣性のローターが重厚でシルキーな巻きごこちを生み、バイブレーションなど引き抵抗の大きなルアーを一定速度で巻く釣りで真価を発揮すると説明している。インフィニティクロス、インフィニティドライブ、アンチツイストフィンが新たに加わり、マイクロモジュールギアIIやHAGANEギアも載る。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s44",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s45",
+									"text": "公式のスプール互換表には17アルテグラ、21アルテグラが載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s46",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-ultegra-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-ultegra-s47",
+									"text": "巻きの釣りが多い人、はじめての1台を手頃な価格帯でしっかり選びたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 25アルテグラ",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f00003slwxfqas.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"shimano-value"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-25-antares",
+				"slug": "shimano-25-antares",
+				"status": "published",
+				"data": {
+					"title": "シマノ 25アンタレス",
+					"model_number": "25アンタレス",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "シマノ · 25年式",
+					"tier": "recommended",
+					"summary": "遠心ブレーキSVS∞(インフィニティ)の伸びを突き詰めた、ベイトリールの最高峰。",
+					"curator_note": "「どのリールよりも遠くへ」。飛距離にこだわる人の1台。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s48",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s49",
+									"text": "シマノのバス用ベイトキャスティングリールの最高峰モデル。公式サイトの品番は100MG・100HG・100XGとその左ハンドル(101)の6品番で、自重は210〜215g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s4a",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s4b",
+									"text": "公式サイトは、遠心ブレーキSVS∞の特性を最大限に活かせるスプールの大きさを探り、ナイロン14lb-100m、径37mm・幅21mmに行き着いたと説明している。逆テーパー形状で糸巻きの形を整えるマグナムライトスプールIV、マイクロモジュールギア、サイレントドライブ、ドライブギア軸のボールベアリング3個支持を載せる。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s4c",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s4d",
+									"text": "公式サイトには、DCブレーキを載せた21アンタレスDCと23アンタレスDC MDも現行品として載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s4e",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-antares-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-antares-s4f",
+									"text": "キャストの気持ちよさと飛距離を何より重視する人、遠心ブレーキのベイトを使い込みたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 25アンタレス",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/baitlurecasting/a075f000049n3noqaq.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"bait"
+					],
+					"series": [
+						"antares"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-25-exsence",
+				"slug": "shimano-25-exsence",
+				"status": "published",
+				"data": {
+					"title": "シマノ 25エクスセンス",
+					"model_number": "25エクスセンス",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "シマノ · 25年式",
+					"tier": "deep",
+					"summary": "シーバス専用のハイエンド。MGLローターとフルメタルボディ。",
+					"curator_note": "シーバスのためだけに作られた、という潔さがいい。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4g",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4h",
+									"text": "シマノのシーバスゲーム用のハイエンドスピニングリール。公式サイトの品番はC3000MHG・3000MHG・4000MXGの3つで、自重は185〜225g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4i",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4j",
+									"text": "公式サイトは、初動と停止の反応がよい低慣性のMGLローターと、滑らかな回転を支えるフルメタルボディを採用し、インフィニティクロス、インフィニティドライブ、インフィニティループを載せたと説明している。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4k",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4l",
+									"text": "公式のスプール互換表には17エクスセンス、21エクスセンス、18エクスセンスCI4+が載っている。同じ名前で、23エクスセンスXR・24エクスセンスBBのスピニングや、22エクスセンスDCなどのベイトリールもある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4m",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-exsence-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-exsence-s4n",
+									"text": "シーバスを本気で追いかけている人、専用機で道具をそろえたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 25エクスセンス",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f000045al1lqau.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"exsence"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-25-stella-sw",
+				"slug": "shimano-25-stella-sw",
+				"status": "published",
+				"data": {
+					"title": "シマノ 25ステラSW",
+					"model_number": "25ステラ SW",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "シマノ · 25年式",
+					"tier": "deep",
+					"summary": "マグロやGTに挑むための大型スピニングの頂点。",
+					"curator_note": "最大ドラグ力30kg。クロマグロを想定した耐久テストまで公表している。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4o",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4p",
+									"text": "シマノの大型ソルトウォーター用スピニングリール。公式サイトの品番は4000HGから30000PGまでの17品番で、自重は360〜995g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4q",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4r",
+									"text": "公式サイトは、ドラグの上部にもワッシャーを配置して前モデル比約4倍の面積にしたXXタフドラグと、ヒートシンクドラグで、熱によるドラグ力の低下を従来比約30%減らしたと説明している。18000番以上はクロマグロを想定した耐久テストで前作比10倍以上の耐久性、最大ドラグ力は30kg(30000は27kg)。インフィニティループ、インフィニティクロス、アンチツイストフィン、Xプロテクトも載る。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4s",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4t",
+									"text": "公式のスプール互換表には、ひとつ前の「19-22ステラSW」が載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4u",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-stella-sw-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-stella-sw-s4v",
+									"text": "オフショアのキャスティングやジギングで大型魚を狙う人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 25ステラ SW",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/largespinning/a075f000043mjvrqag.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"sw"
+					],
+					"series": [
+						"stella"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-25-sephia-xr",
+				"slug": "shimano-25-sephia-xr",
+				"status": "published",
+				"data": {
+					"title": "シマノ 25セフィアXR",
+					"model_number": "25セフィア XR",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "シマノ · 25年式",
+					"tier": "recommended",
+					"summary": "エギング専用設計。シャクリとフォールを両立するMGLローター搭載機。",
+					"curator_note": "糸フケの回収が多いエギングのための工夫がたくさんある。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s4w",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s4x",
+									"text": "シマノのエギング専用スピニングリール。公式サイトの品番はC2000S・C3000S・C3000SDH・C3000SHG・C3000SDHHGの5つで、自重は150〜185g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s4y",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s4z",
+									"text": "公式サイトは、MGLローターでエギをスムーズに操作でき、巻き始めが軽いと説明している。C3000サイズにはドラグ設定に素早くたどり着ける「ラピッドファイアドラグ」を搭載(C2000Sは除く)。糸フケを回収する動作が多いエギングのライントラブルを減らすアンチツイストフィンも載る。ライトエギング向けのC2000Sも加わった。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s50",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s51",
+									"text": "公式のスプール互換表には17セフィアCI4+、19セフィアSS、21セフィアXRが載っている。エギング用のセフィアには、ほかに23セフィアSS、26セフィアBBがある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s52",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-sephia-xr-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-sephia-xr-s53",
+									"text": "アオリイカのエギングを始めたい人、軽いロッドと合わせたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 25セフィア XR",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f000044uflaqaw.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"shimano-light"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-25-soare-xr",
+				"slug": "shimano-25-soare-xr",
+				"status": "published",
+				"data": {
+					"title": "シマノ 25ソアレXR",
+					"model_number": "25ソアレ XR",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "シマノ · 25年式",
+					"tier": "recommended",
+					"summary": "アジング・メバリングなどライトソルトの専用機。",
+					"curator_note": "1gに満たないジグヘッドを操る釣りのためのリール。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s54",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s55",
+									"text": "シマノのライトソルト用スピニングリール。公式サイトの品番は500SPG・C2000SSPG・C2000SSHG・C2500SHGの4つで、自重は135〜150g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s56",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s57",
+									"text": "公式サイトは、軽量・低慣性のマグナムライトローターで回転の立ち上がりと静止がすばやく、手感度も高まると説明している。インフィニティドライブ、インフィニティクロスを載せ、ドラグには滑り出しの軽いハイレスポンスドラグを採用。細いラインに合った糸巻量にしている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s58",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s59",
+									"text": "公式のスプール互換表には17ソアレCI4+、21-22ソアレXR、18ソアレBB、22ソアレBBが載っている。公式サイトによると、25ソアレXRの500SPGは22ソアレXR・17ソアレCI4+の500Sとスプールの互換性がある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s5a",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-25-soare-xr-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-25-soare-xr-s5b",
+									"text": "アジングやメバリングで、軽いジグヘッドの釣りを突き詰めたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 25ソアレ XR",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f000049ovsuqay.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"shimano-light"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-25-caldia",
+				"slug": "daiwa-25-caldia",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 25カルディア",
+					"model_number": "25カルディア",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "ダイワ · 2025年発売",
+					"tier": "essential",
+					"summary": "ついにエアドライブデザインを採用した、ダイワの中核モデル。",
+					"curator_note": "上位機の2大技術が、手の届く価格帯に降りてきた。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5c",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5d",
+									"text": "ダイワのスピニングリール。公式サイトにはFC LT1000SからLT5000-CXHまで15の品番が載っている。パーツ検索システムでの発売年は2025年。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5e",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5f",
+									"text": "公式サイトは、エアドライブデザインをカルディアに初めて採用し、ボディとローターにはZAIONのエッセンスを受け継ぐZAION Vを使って軽さと高い剛性を両立したと説明している。モノコックボディも載せ、新たに5000番を加えてサーフやライトショアジギングにも広げた。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5g",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5h",
+									"text": "パーツ検索システムには2002年以降のカルディアが載っていて、年式は09・11・14・18・21・22・25と続く。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5i",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-caldia-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-caldia-s5j",
+									"text": "はじめてのしっかりしたスピニングを探している人、上位機の技術を手頃に試したい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 25カルディア",
+					"official_url": "https://www.daiwa.com/jp/product/lsej2uh"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"daiwa-value"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-25-saltiga",
+				"slug": "daiwa-25-saltiga",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 25ソルティガ",
+					"model_number": "25ソルティガ",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "ダイワ · 2025年発売",
+					"tier": "deep",
+					"summary": "ダイワのソルトウォーターの旗艦。パワードライブデザインの大型スピニング。",
+					"curator_note": "「新たな挑戦は、ここから始まる」。8000番から30000番まで。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5k",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5l",
+									"text": "ダイワの大型ソルトウォーター用スピニングリール。公式サイトには8000-Pから30000-Hまで12の品番が載っている。パーツ検索システムでは、多くの品番が2025年、30000番が2026年の発売。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5m",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5n",
+									"text": "公式サイトに載っている技術は、大型リールの設計思想「パワードライブデザイン」(パワードライブエンジン、ローター、クランクパワーベールなど)、オーバーサイズのパワーデジギア、モノコックボディ、ドラグのATD TOUGH、マグシールドとマグシールドラインローラー。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5o",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5p",
+									"text": "パーツ検索システムには2001年以降のソルティガが載っていて、スピニングの年式は10・14・15・17・20・23・25と続く。両軸リールのソルティガもある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5q",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-25-saltiga-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-25-saltiga-s5r",
+									"text": "オフショアのキャスティングやジギングで、マグロやヒラマサなど大型魚を狙う人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 25ソルティガ スピニング",
+					"official_url": "https://www.daiwa.com/jp/product/i25pggl"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"sw"
+					],
+					"series": [
+						"saltiga"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-26-kohga-ic-150",
+				"slug": "daiwa-26-kohga-ic-150",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 26紅牙 IC 150",
+					"model_number": "26紅牙 IC 150",
+					"release_year": 2025,
+					"released": "2025",
+					"scale": "ダイワ · 2025年発売",
+					"tier": "recommended",
+					"summary": "タイラバ用のカウンター付きベイト。ハイパードライブデジギアで巻きを磨いた。",
+					"curator_note": "年式は26、発売は2025年。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5s",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5t",
+									"text": "ダイワのタイラバ用両軸リール(カウンター付き)。公式サイトには150P・150・150Hと左ハンドルの6品番が載っている。パーツ検索システムでの発売年は2025年(年式は26)。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5u",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5v",
+									"text": "公式サイトは、低い負荷から高い負荷まで滑らかな回転が求められるタイラバのために、ハイパードライブデザインの要であるハイパードライブデジギアを進化させたと説明している。ICカウンターとLEDバックライト、ハイパーダブルサポート、アルミのハイパーアームドハウジングを載せる。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5w",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5x",
+									"text": "「紅牙」は、ダイワのタイラバ・タイテンヤのブランド。名前は、鯛をイメージした紅色と、獲物に食らいつく鯛の牙に由来すると公式サイトにある。パーツ検索システムで見ると、両軸リールの紅牙は17・23・26年式がある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5y",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-kohga-ic-150-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-kohga-ic-150-s5z",
+									"text": "船からマダイをタイラバで狙う人、水深やフォールを数字で確かめながら釣りたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 26紅牙 IC 150",
+					"official_url": "https://www.daiwa.com/jp/product/dv2jkeh"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"conventional"
+					],
+					"series": [
+						"kohga"
+					]
+				}
+			},
+			{
+				"id": "kit-shimano-26-nasci",
+				"slug": "shimano-26-nasci",
+				"status": "published",
+				"data": {
+					"title": "シマノ 26ナスキー",
+					"model_number": "26ナスキー",
+					"release_year": 2026,
+					"released": "2026",
+					"scale": "シマノ · 26年式",
+					"tier": "essential",
+					"summary": "500番からC5000番まで。上位機譲りの技術を載せたハイコストパフォーマンス機。",
+					"curator_note": "淡水からソルトまで、1台目にちょうどいい。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s60",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s61",
+									"text": "シマノの汎用スピニングリール。公式サイトの品番は500からC5000XGまでの12品番で、自重は170〜300g。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s62",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s63",
+									"text": "公式サイトは、HAGANEギア、X-SHIP、AR-Cスプールといったシマノを代表する機構と、防水のコアプロテクトを備えたうえで、上位機種からインフィニティドライブ、ワンピースベール、アンチツイストフィンを受け継いだと説明している。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s64",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s65",
+									"text": "公式のスプール互換表には16-18ナスキー、21ナスキーが載っている。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s66",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "shimano-26-nasci-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "shimano-26-nasci-s67",
+									"text": "これから釣りを始める人、バス・トラウトから堤防のソルトまで1台で試したい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "シマノ 26ナスキー",
+					"official_url": "https://fish.shimano.com/ja-JP/product/reel/hanyouspinning/a075f00003slx0xqac.html"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"shimano-value"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-26-bg-sw",
+				"slug": "daiwa-26-bg-sw",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 26BG SW",
+					"model_number": "26BG SW",
+					"release_year": 2026,
+					"released": "2026",
+					"scale": "ダイワ · 2026年発売",
+					"tier": "recommended",
+					"summary": "世界中の大型魚と渡り合うための、タフな大型スピニング。",
+					"curator_note": "パワードライブデザインを、手の届く価格帯で。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s68",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s69",
+									"text": "ダイワの大型ソルトウォーター用スピニングリール。公式サイトにはSW5000-HからSW20000まで8の品番が載っている。パーツ検索システムでの発売年は2026年(ダイワ公式サイトの新製品一覧では2026年10月の発売)。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s6a",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s6b",
+									"text": "公式サイトに載っている技術は、パワードライブデザイン、オーバーサイズのパワーデジギア、ワイヤーのクランクパワーベール、パワードライブローター、ドラグのATD TOUGH、LC-ABS SW。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s6c",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s6d",
+									"text": "パーツ検索システムで見ると、BGは16年式、23年式、26年式がある。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s6e",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-bg-sw-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-bg-sw-s6f",
+									"text": "ショアジギングやオフショアで大型魚に挑みたいが、まずは手頃な価格のリールで始めたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 26BG SW",
+					"official_url": "https://www.daiwa.com/jp/product/i610c3l"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"sw"
+					],
+					"series": [
+						"daiwa-value"
+					]
+				}
+			},
+			{
+				"id": "kit-daiwa-26-freams",
+				"slug": "daiwa-26-freams",
+				"status": "published",
+				"data": {
+					"title": "ダイワ 26フリームス",
+					"model_number": "26フリームス",
+					"release_year": 2026,
+					"released": "2026",
+					"scale": "ダイワ · 2026年発売",
+					"tier": "essential",
+					"summary": "エアドライブローターとZAION Vを手頃な価格帯に。最新のフリームス。",
+					"curator_note": "「夢のカタチは自由自在」。1000番から6000番まで。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b0",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6g",
+									"text": "どんなリール",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b1",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6h",
+									"text": "ダイワのスピニングリール。公式サイトにはLT1000S-PからLT6000D-Hまで12の品番が載っている。パーツ検索システムでの発売年は2026年。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b2",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6i",
+									"text": "特徴",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b3",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6j",
+									"text": "公式サイトに載っている技術は、エアドライブローターとエアドライブベール、ボディ素材のZAION V、防水構造のマグシールド、タフデジギア、ドラグのATD TYPE-L。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b4",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6k",
+									"text": "シリーズの歩み",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b5",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6l",
+									"text": "パーツ検索システムには2001年以降のフリームスが載っていて、年式は11・15・18・21・26と続く。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b6",
+							"style": "h3",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6m",
+									"text": "こんな人におすすめ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "daiwa-26-freams-b7",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "daiwa-26-freams-s6n",
+									"text": "これから釣りを始める人、堤防からサーフまで幅広い番手から選びたい人に。",
+									"marks": []
+								}
+							]
+						}
+					],
+					"amazon_query": "ダイワ 26フリームス",
+					"official_url": "https://www.daiwa.com/jp/product/w7t57lq"
+				},
+				"taxonomies": {
+					"era": [
+						"y2025"
+					],
+					"grade": [
+						"spinning"
+					],
+					"series": [
+						"daiwa-value"
+					]
+				}
+			}
+		],
+		"posts": [
+			{
+				"id": "post-nenshiki",
+				"slug": "nenshiki",
+				"status": "published",
+				"data": {
+					"title": "リールの「年式」と発売年:22ステラは2022年に出たのか",
+					"excerpt": "リールの名前の頭に付く2桁の数字は「年式」。発売年と同じとは限りません。このサイトの年の扱いと合わせてまとめました。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "k7",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k1",
+									"href": "/kits/shimano-22-stella"
+								},
+								{
+									"_type": "link",
+									"_key": "k4",
+									"href": "/kits/daiwa-22-exist"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k0",
+									"text": "シマノやダイワのリールは、同じシリーズ名のままモデルチェンジを繰り返します。そこで、どの代のリールかを区別するために、名前の頭に2桁の数字を付けて呼びます。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k2",
+									"text": "『シマノ 22ステラ』",
+									"marks": [
+										"k1"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k3",
+									"text": "なら「22」、",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k5",
+									"text": "『ダイワ 22イグジスト』",
+									"marks": [
+										"k4"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k6",
+									"text": "なら「22」です。この数字が「年式」です。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k9",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k8",
+									"text": "年式は、発売年と同じとは限らない",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "kb",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ka",
+									"text": "年式はモデルの年を表す数字ですが、実際に店頭に並んだ年とずれることがあります。ダイワ公式のパーツ検索システムは品番ごとに「発売年」を載せていて、そこで確かめると、ずれている例が見つかります。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ki",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "kc",
+									"href": "/kits/daiwa-26-kohga-ic-150"
+								},
+								{
+									"_type": "link",
+									"_key": "kf",
+									"href": "/kits/daiwa-25-tatula-sv-tw"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kd",
+									"text": "『ダイワ 26紅牙 IC 150』",
+									"marks": [
+										"kc"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "ke",
+									"text": "は、年式が26なのに発売年は2025年です。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "kg",
+									"text": "『ダイワ 25タトゥーラ SV TW』",
+									"marks": [
+										"kf"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "kh",
+									"text": "も、年式は25で発売年は2024年。秋に出る製品に、翌年の年式を付けることがあるためです。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "kq",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "kk",
+									"href": "/kits/daiwa-22-exist"
+								},
+								{
+									"_type": "link",
+									"_key": "kn",
+									"href": "/kits/daiwa-24-luvias"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kj",
+									"text": "反対に、同じ年式のまま後から品番が増えることもあります。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "kl",
+									"text": "『ダイワ 22イグジスト』",
+									"marks": [
+										"kk"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "km",
+									"text": "は、LTモデルが2022年の発売で、SFモデルは2023年の発売です。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "ko",
+									"text": "『ダイワ 24ルビアス』",
+									"marks": [
+										"kn"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "kp",
+									"text": "も、SFモデルとSTは2025年に加わりました。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ks",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kr",
+									"text": "このサイトの年の扱い",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ku",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kt",
+									"text": "このサイトでは、ダイワのリールは公式のパーツ検索システムに載っている「発売年」で、シマノのリールは公式サイトの品名に付いている年式(22ステラなら2022年)で並べています。シマノの公式サイトには発売年や発売月が載っていないためです。名簿では、シマノの行は「22年式」、ダイワの行は「2022年 発売」のように書き分けています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "kw",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kv",
+									"text": "どちらのメーカーも、発売月は公式サイトで確かめられないものが多いので、このサイトでは月は載せていません(ダイワの新製品一覧で発売月が分かるものだけ、本文で触れています)。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ky",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kx",
+									"text": "自分のリールの年式を調べるには",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k10",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kz",
+									"text": "全機種名簿では、シリーズ名で検索すると、その年式の並びが分かります。たとえば「イグジスト」で探すと、ダイワのパーツ検索システムに載っている2005年以降のイグジストが年順に出てきます。品名の頭の数字を見れば、どの代か分かります。",
+									"marks": []
+								}
+							]
+						}
+					]
+				},
+				"bylines": [
+					{
+						"byline": "byline-editorial"
+					}
+				],
+				"taxonomies": {
+					"category": [
+						"guide"
+					],
+					"tag": [
+						"beginner",
+						"history"
+					]
+				}
+			},
+			{
+				"id": "post-technology",
+				"slug": "technology",
+				"status": "published",
+				"data": {
+					"title": "シマノとダイワの技術の名前を読み解く:インフィニティとエアドライブ",
+					"excerpt": "製品ページに並ぶカタカナとアルファベットの技術名。何のための技術なのかを、公式サイトの説明をもとに整理しました。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "k12",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k11",
+									"text": "リールの製品ページには、たくさんの技術の名前が並びます。名前は違っても、目指すところは「軽く回る」「壊れにくい」「糸が絡まない」「水が入らない」の4つにだいたい分けられます。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k14",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k13",
+									"text": "シマノ:3つのインフィニティ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k18",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k15",
+									"href": "/kits/shimano-22-stella"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k16",
+									"text": "『シマノ 22ステラ』",
+									"marks": [
+										"k15"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k17",
+									"text": "の公式サイトは、3つの技術を「インフィニティ」として打ち出しています。ギアの歯面の設計を改めて耐久性を上げた「インフィニティクロス」、ラインを密に巻いて放出時の抵抗を減らす「インフィニティループ」、高い負荷でも軽く巻ける「インフィニティドライブ」です。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k1g",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k1a",
+									"href": "/kits/shimano-23-stradic"
+								},
+								{
+									"_type": "link",
+									"_key": "k1d",
+									"href": "/kits/shimano-26-nasci"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k19",
+									"text": "この技術は下のモデルにも広がっています。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k1b",
+									"text": "『シマノ 23ストラディック』",
+									"marks": [
+										"k1a"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k1c",
+									"text": "は、インフィニティクロス・インフィニティドライブ・アンチツイストフィン(ライントラブルの抑制)・デュラクロス(ドラグワッシャーの耐久性)の4つを載せ、公式サイトによるとインフィニティクロスでギアの耐久性は従来設計の約2倍になりました。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k1e",
+									"text": "『シマノ 26ナスキー』",
+									"marks": [
+										"k1d"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k1f",
+									"text": "にもインフィニティドライブとアンチツイストフィンが入っています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k1i",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k1h",
+									"text": "シマノ:MGLとコアソリッド",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k1q",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k1k",
+									"href": "/kits/shimano-23-vanquish"
+								},
+								{
+									"_type": "link",
+									"_key": "k1n",
+									"href": "/kits/shimano-25-ultegra"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k1j",
+									"text": "シマノのスピニングは、ローターの作りで2つの系統に分かれます。カーボン繊維強化樹脂CI4+の軽いローター(MGLローター)を使う「マグナムライト」系は、巻き始めと止めが軽く、感度が高いのが持ち味。頂点は",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k1l",
+									"text": "『シマノ 23ヴァンキッシュ』",
+									"marks": [
+										"k1k"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k1m",
+									"text": "です。金属や高強度樹脂の重めのローターを使う「コアソリッド」系は、適度な慣性で重厚な巻き心地になり、一定の速さで巻き続ける釣りに向きます。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k1o",
+									"text": "『シマノ 25アルテグラ』",
+									"marks": [
+										"k1n"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k1p",
+									"text": "はその入口のモデルです。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k1s",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k1r",
+									"text": "ダイワ:エアドライブデザイン",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k23",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k1u",
+									"href": "/kits/daiwa-22-exist"
+								},
+								{
+									"_type": "link",
+									"_key": "k1x",
+									"href": "/kits/daiwa-24-certate"
+								},
+								{
+									"_type": "link",
+									"_key": "k20",
+									"href": "/kits/daiwa-24-revros"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k1t",
+									"text": "ダイワのスピニングの土台は「エアドライブデザイン」です。公式サイトの説明では、エアドライブローター、エアドライブベール、エアドライブスプール、エアドライブシャフトの最大4つの技術でできた設計思想で、軽い巻き出しと重量バランスの良さを目指したもの。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k1v",
+									"text": "『ダイワ 22イグジスト』",
+									"marks": [
+										"k1u"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k1w",
+									"text": "や",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k1y",
+									"text": "『ダイワ 24セルテート』",
+									"marks": [
+										"k1x"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k1z",
+									"text": "は4つすべてを載せ、",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k21",
+									"text": "『ダイワ 24レブロス』",
+									"marks": [
+										"k20"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k22",
+									"text": "のような手頃なモデルにもローターとベールが入っています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k25",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k24",
+									"text": "ダイワ:モノコックボディとマグシールド",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k27",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k26",
+									"text": "「モノコックボディ」は、ボディカバーをなくし、ボディに直接プレートをねじ込んで固定する構造です。公式サイトによると、ギアの支持精度・剛性・気密性が上がり、ドライブギアを大きくできるようになりました。「マグシールド」は、磁性を持つオイルの壁で海水やほこりの侵入を防ぐダイワ独自の防水構造です。ドラグの「ATD TYPE-L」は、魚の引きに合わせて滑らかに効き続けるATDの、初動の反応を高めたものです。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k2f",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k29",
+									"href": "/kits/daiwa-24-luvias"
+								},
+								{
+									"_type": "link",
+									"_key": "k2c",
+									"href": "/kits/daiwa-25-caldia"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k28",
+									"text": "ボディやローターの素材では、カーボン樹脂の「ZAION」と、そのエッセンスを受け継ぐ「ZAION V」があります。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k2a",
+									"text": "『ダイワ 24ルビアス』",
+									"marks": [
+										"k29"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k2b",
+									"text": "はZAION、",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k2d",
+									"text": "『ダイワ 25カルディア』",
+									"marks": [
+										"k2c"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k2e",
+									"text": "はZAION Vです。",
+									"marks": []
+								}
+							]
+						}
+					]
+				},
+				"bylines": [
+					{
+						"byline": "byline-editorial"
+					}
+				],
+				"taxonomies": {
+					"category": [
+						"guide"
+					],
+					"tag": [
+						"technology"
+					]
+				}
+			},
+			{
+				"id": "post-first-spinning",
+				"slug": "first-spinning",
+				"status": "published",
+				"data": {
+					"title": "はじめてのスピニングリール:シマノとダイワの入門〜中級機",
+					"excerpt": "最初の1台に選ばれることの多い価格帯のスピニングを、公式サイトの説明で比べました。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "k2h",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k2g",
+									"text": "これから釣りを始めるなら、まずはスピニングリールです。軽いルアーや仕掛けでも投げやすく、糸のトラブルも少ないからです。シマノもダイワも、手頃な価格帯にいくつものシリーズを用意しています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k2j",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k2i",
+									"text": "シマノ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k2n",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k2k",
+									"href": "/kits/shimano-26-nasci"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k2l",
+									"text": "『シマノ 26ナスキー』",
+									"marks": [
+										"k2k"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k2m",
+									"text": "は、500番からC5000番までそろう汎用機です。公式サイトは、HAGANEギアやコアプロテクト(防水)に加え、上位機種からインフィニティドライブなどを受け継いだと説明しています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k2r",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k2o",
+									"href": "/kits/shimano-25-ultegra"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k2p",
+									"text": "『シマノ 25アルテグラ』",
+									"marks": [
+										"k2o"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k2q",
+									"text": "は、重めのローターで滑らかに巻ける「コアソリッド」系の入口です。巻き続ける釣りが多い人に向きます。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k2w",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k2t",
+									"href": "/kits/shimano-23-stradic"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k2s",
+									"text": "もう一段上を見るなら",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k2u",
+									"text": "『シマノ 23ストラディック』",
+									"marks": [
+										"k2t"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k2v",
+									"text": "。フラッグシップの4つの技術を載せた、シマノのいう「新基準」です。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k2y",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k2x",
+									"text": "ダイワ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k32",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k2z",
+									"href": "/kits/daiwa-24-revros"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k30",
+									"text": "『ダイワ 24レブロス』",
+									"marks": [
+										"k2z"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k31",
+									"text": "は、エアドライブローターを載せた入門機。公式サイトによると、2500S-XHで210gと、前のモデルより10g軽くなりました。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k39",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k33",
+									"href": "/kits/daiwa-26-freams"
+								},
+								{
+									"_type": "link",
+									"_key": "k36",
+									"href": "/kits/daiwa-25-caldia"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k34",
+									"text": "『ダイワ 26フリームス』",
+									"marks": [
+										"k33"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k35",
+									"text": "はZAION Vのボディとマグシールドを備え、1000番から6000番まで12の品番があります。",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k37",
+									"text": "『ダイワ 25カルディア』",
+									"marks": [
+										"k36"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k38",
+									"text": "は、エアドライブデザインとモノコックボディというダイワの2大技術をそろえた中核モデルです。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k3e",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k3b",
+									"href": "/kits/daiwa-23-lexa"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3a",
+									"text": "金属ボディでタフに使いたいなら、アルミボディの",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k3c",
+									"text": "『ダイワ 23レグザ』",
+									"marks": [
+										"k3b"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k3d",
+									"text": "があります。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k3g",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3f",
+									"text": "番手の選び方",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k3i",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3h",
+									"text": "番手(1000番、2500番、4000番など)は、メーカーごとにおおよその大きさを表す数字で、大きいほど太い糸がたくさん巻けます。各社の製品ページには、番手ごとの糸巻量(何号の糸が何m巻けるか)が載っています。使う糸の太さと長さが巻ける番手を選ぶのが基本です。",
+									"marks": []
+								}
+							]
+						}
+					]
+				},
+				"bylines": [
+					{
+						"byline": "byline-editorial"
+					}
+				],
+				"taxonomies": {
+					"category": [
+						"guide"
+					],
+					"tag": [
+						"beginner"
+					]
+				}
+			},
+			{
+				"id": "post-flagship",
+				"slug": "flagship",
+				"status": "published",
+				"data": {
+					"title": "最上位どうし:22ステラと22イグジスト",
+					"excerpt": "シマノとダイワ、それぞれの小型スピニングの頂点。同じ2022年式の2台を、公式サイトの説明で並べました。",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "k3q",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k3k",
+									"href": "/kits/shimano-22-stella"
+								},
+								{
+									"_type": "link",
+									"_key": "k3n",
+									"href": "/kits/daiwa-22-exist"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3j",
+									"text": "シマノの",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k3l",
+									"text": "『シマノ 22ステラ』",
+									"marks": [
+										"k3k"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k3m",
+									"text": "と、ダイワの",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k3o",
+									"text": "『ダイワ 22イグジスト』",
+									"marks": [
+										"k3n"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k3p",
+									"text": "。どちらも2022年式で、それぞれのメーカーの小型スピニングリールの最上位です。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k3s",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3r",
+									"text": "22ステラ",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k3u",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3t",
+									"text": "シマノ公式サイトによると、ステラは1992年に生まれたブランドです。22ステラは、インフィニティクロス、インフィニティループ、インフィニティドライブの「3つのインフィニティ」を載せ、1000SSPGからC5000XGまで16品番。自重は165〜260gです。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k3w",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3v",
+									"text": "22イグジスト",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k3y",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3x",
+									"text": "イグジストは、ダイワのパーツ検索システムでは2005年以降のモデルが載っていて、年式は12・15・18・22と続きます。22イグジストは、エアドライブデザインをフル装備し、モノコックボディ、タフデジギア、マグシールドを載せたモデル。LTモデルは2022年、軽いルアー向けのSFモデルは2023年に発売されました。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k40",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3z",
+									"text": "考え方の違い",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k42",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k41",
+									"text": "シマノは、ギアの耐久性や巻き上げ力、ラインの放出のしやすさといった「巻き」と「投げ」の技術を前面に出しています。ダイワは、軽い巻き出しと重量バランスを生むエアドライブデザインと、剛性を生むモノコックボディ、防水のマグシールドを柱にしています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4g",
+							"style": "normal",
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "k44",
+									"href": "/kits/shimano-24-twinpower"
+								},
+								{
+									"_type": "link",
+									"_key": "k47",
+									"href": "/kits/shimano-23-vanquish"
+								},
+								{
+									"_type": "link",
+									"_key": "k4a",
+									"href": "/kits/daiwa-24-certate"
+								},
+								{
+									"_type": "link",
+									"_key": "k4d",
+									"href": "/kits/daiwa-23-airity"
+								}
+							],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k43",
+									"text": "その下のモデルを見ると、両社の考え方の広がり方が分かります。シマノは",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k45",
+									"text": "『シマノ 24ツインパワー』",
+									"marks": [
+										"k44"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k46",
+									"text": "(剛性)と",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k48",
+									"text": "『シマノ 23ヴァンキッシュ』",
+									"marks": [
+										"k47"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k49",
+									"text": "(軽さ)、ダイワは",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k4b",
+									"text": "『ダイワ 24セルテート』",
+									"marks": [
+										"k4a"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k4c",
+									"text": "(剛性)と",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"_key": "k4e",
+									"text": "『ダイワ 23エアリティ』",
+									"marks": [
+										"k4d"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "k4f",
+									"text": "(軽さ)と、どちらも「強さ」と「軽さ」の2つの方向にモデルを分けています。",
+									"marks": []
+								}
+							]
+						}
+					]
+				},
+				"bylines": [
+					{
+						"byline": "byline-editorial"
+					}
+				],
+				"taxonomies": {
+					"category": [
+						"history"
+					],
+					"tag": [
+						"flagship"
+					]
+				}
+			}
+		],
+		"pages": [
+			{
+				"id": "about",
+				"slug": "about",
+				"status": "published",
+				"data": {
+					"title": "このサイトについて",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "k4i",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4h",
+									"text": "「巻き継ぐ」は、シマノとダイワの釣りリールを、種類・シリーズ・年代で横断できるキュレーションサイトです。厳選したリールの解説と、旧モデルまで含めた全機種名簿を載せています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4k",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4j",
+									"text": "編集方針",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4m",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4l",
+									"text": "点数やランキングはつけません。それぞれのリールに、どんなリールかを伝える「ひとこと紹介」と「キュレーターの一言」を添えています。推し度は「定番」「推し」「通好み」の3段階です。価格や売れ行きは書いていません。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4o",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4n",
+									"text": "年の扱い",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4q",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4p",
+									"text": "リールの名前の頭の2桁の数字(22ステラの「22」)は「年式」で、実際の発売年とずれることがあります。このサイトでは次のように年を扱っています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4s",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4r",
+									"text": "ダイワのリールは、ダイワ公式サイトからリンクされている「パーツ検索システム」(株式会社SLP運営)に、品番ごとに載っている「発売年」を使っています。年式と発売年がずれる場合は、発売年のほうを使います。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4u",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4t",
+									"text": "シマノのリールは、シマノ公式サイトに発売年・発売月が載っていないため、公式サイトの品名に付いている年式(22ステラなら2022年)を使っています。名簿では「22年式」のように書いて、発売年と区別しています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4w",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4v",
+									"text": "発売月は、どちらのメーカーも公式サイトで確かめられないものが多いため載せていません。年の分からないものは「年不明」にまとめています。年代(〜1999年、2000年代など)も、この年で分けています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k4y",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4x",
+									"text": "全機種名簿の出典",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k50",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k4z",
+									"text": "ダイワ:ダイワ公式サイトの「パーツ検索システム」(sl-planets.co.jp)に載っているリールの全品番。同じシリーズ・同じ年式・同じ発売年の品番を1行にまとめています(サイズやギア比の違いは1行)。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k52",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k51",
+									"text": "シマノ:シマノ公式サイトの現行のリールの製品ページ(年式と品番)と、公式の「スプール互換表」「一部リール取扱説明書一覧」に載っている年式つきの品名。シマノの旧モデルは、公式サイトで確かめられる範囲(主に2010年代以降)だけを載せています。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k54",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k53",
+									"text": "2026-10-31時点の情報です。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k56",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k55",
+									"text": "解説について",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k58",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k57",
+									"text": "リールの解説は、シマノ・ダイワの公式サイトの製品ページの説明と、上の名簿の情報をもとに、当サイトでまとめ直したものです。自重や品番の数は、公式サイトの仕様表によります。",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k5a",
+							"style": "h2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k59",
+									"text": "情報について",
+									"marks": []
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k5c",
+							"style": "normal",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k5b",
+									"text": "誤りに気づいたら、ぜひ教えてください。当サイトはファンによる非公式のサイトで、株式会社シマノ、グローブライド株式会社(ダイワ)とは関係ありません。",
+									"marks": []
+								}
+							]
+						}
+					]
+				}
+			}
+		]
+	}
+}
