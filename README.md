@@ -53,6 +53,8 @@ npm run dev      # http://localhost:4321
 npm run deploy   # astro build && wrangler deploy
 ```
 
+GitHub henry12-masa/reel の main への push で、Cloudflare Workers Builds が自動でビルド・デプロイする(ビルド `npm run build`、デプロイ `npx wrangler deploy`、プレビューのビルドは無効。2026-11-25に設定)。
+
 **注意**: `wrangler deploy` は dist に生成された設定(dist/server/wrangler.json)を使う。wrangler.jsonc を変えたら必ず build し直す(複製直後に古い dist のまま deploy して、連ね継ぐの Worker を上書きした事故あり)。
 
 公開: Workers「reel-curation」+ D1「reel-curation」+ R2「reel-curation-media」+ KV「reel-curation-session」。暗号鍵は wrangler secret(控えは .dev.vars、git に入れない)。
