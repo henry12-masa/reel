@@ -39,6 +39,12 @@ export const SERIES = {
 	metanium: "メタニウム",
 	ocea: "オシア",
 	"shimano-electric": "ビーストマスター",
+	vanford: "ヴァンフォード",
+	aldebaran: "アルデバラン",
+	slx: "SLX",
+	grappler: "グラップラー",
+	forcemaster: "フォースマスター",
+	surfleader: "サーフリーダー",
 	exist: "イグジスト",
 	certate: "セルテート",
 	airity: "エアリティ",
@@ -49,6 +55,12 @@ export const SERIES = {
 	steez: "スティーズ",
 	zillion: "タトゥーラ",
 	seaborg: "シーボーグ",
+	emeraldas: "エメラルダス",
+	gekkabijin: "月下美人",
+	impult: "インパルト",
+	"tournament-surf": "トーナメントサーフ",
+	"daiwa-zillion": "ジリオン",
+	morethan: "モアザン",
 };
 
 export const TIERS = {
