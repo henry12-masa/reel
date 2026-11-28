@@ -51,6 +51,9 @@ export const SERIES = {
 	seihakou: "セイハコウ",
 	sedona: "セドナ",
 	scorpion: "スコーピオン",
+	bantam: "バンタム",
+	complex: "コンプレックス",
+	speedmaster: "スピードマスター石鯛",
 	exist: "イグジスト",
 	certate: "セルテート",
 	airity: "エアリティ",
@@ -71,6 +74,7 @@ export const SERIES = {
 	leobritz: "レオブリッツ",
 	tierra: "ティエラ",
 	"daiwa-imz": "IM Z",
+	genpaou: "幻覇王",
 };
 
 export const TIERS = {
