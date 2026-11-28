@@ -45,6 +45,8 @@ export const SERIES = {
 	grappler: "グラップラー",
 	forcemaster: "フォースマスター",
 	surfleader: "サーフリーダー",
+	sahara: "サハラ",
+	engetsu: "エンゲツ",
 	exist: "イグジスト",
 	certate: "セルテート",
 	airity: "エアリティ",
@@ -61,6 +63,8 @@ export const SERIES = {
 	"tournament-surf": "トーナメントサーフ",
 	"daiwa-zillion": "ジリオン",
 	morethan: "モアザン",
+	alphas: "アルファス",
+	leobritz: "レオブリッツ",
 };
 
 export const TIERS = {
