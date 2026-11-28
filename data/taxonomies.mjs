@@ -47,6 +47,8 @@ export const SERIES = {
 	surfleader: "サーフリーダー",
 	sahara: "サハラ",
 	engetsu: "エンゲツ",
+	lakemaster: "レイクマスター",
+	seihakou: "セイハコウ",
 	exist: "イグジスト",
 	certate: "セルテート",
 	airity: "エアリティ",
@@ -65,6 +67,7 @@ export const SERIES = {
 	morethan: "モアザン",
 	alphas: "アルファス",
 	leobritz: "レオブリッツ",
+	tierra: "ティエラ",
 };
 
 export const TIERS = {
